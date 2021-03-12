@@ -88,7 +88,7 @@ ifeq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ
 $(PKG)_CONFIGURE_OPTIONS += --disable-multihome
 endif
 $(PKG)_CONFIGURE_OPTIONS += --disable-plugins
-$(PKG)_CONFIGURE_OPTIONS += --disable-port-share
+${PKG}_CONFIGURE_OPTIONS += --enable-port-share
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_MGMNT),--enable-management,--disable-management)
 $(PKG)_CONFIGURE_OPTIONS += --disable-pkcs11
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),--with-crypto-library=openssl)
