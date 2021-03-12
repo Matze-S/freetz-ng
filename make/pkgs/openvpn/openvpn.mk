@@ -79,7 +79,7 @@ $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZ4),--enable-lz4
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-multihome
 $(PKG)_CONFIGURE_OPTIONS += --disable-plugins
-$(PKG)_CONFIGURE_OPTIONS += --disable-port-share
+${PKG}_CONFIGURE_OPTIONS += --enable-port-share
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_MGMNT),--enable-management,--disable-management)
 $(PKG)_CONFIGURE_OPTIONS += --disable-pkcs11
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),--with-crypto-library=openssl)
