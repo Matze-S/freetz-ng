@@ -1573,6 +1573,7 @@ if FREETZ_PATCH_UDEVMOUNT
 
 endif # FREETZ_PATCH_UDEVMOUNT
 
+
 config FREETZ_PATCH_FREETZMOUNT
 	bool "Add FREETZMOUNT"
 	depends on FREETZ_AVM_VERSION_06_5X_MAX
@@ -1751,6 +1752,13 @@ config FREETZ_DROP_NOEXEC_EXTERNAL
 endif
 
 comment "Replacement patches --------------------------------------"
+
+
+config FREETZ_PLCD_PATCH
+        bool "Patch PLCD run to use no locale"
+        depends on FREETZ_BUSYBOX_UNICODE_SUPPORT
+        default y
+        help
 
 config FREETZ_KEEP_AVM_UCLIBC
 	bool "Keep AVM uClibc - FOR TESTING PURPOSES ONLY"
