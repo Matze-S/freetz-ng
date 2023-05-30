@@ -25,4 +25,6 @@
 
 # ignore eclipse project files
 /.project
+.bashrc
+.vscode
 
