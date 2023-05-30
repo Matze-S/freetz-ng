@@ -25,4 +25,7 @@
 
 # ignore eclipse project files
 /.project
+.bashrc
+.vscode
+.MSChelpers.tgz
 
