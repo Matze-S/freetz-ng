@@ -59,7 +59,7 @@ $(TARGET_TOOLCHAIN_STAGING_DIR)/$(CCACHE_TARGET_BINARY): $(CCACHE_DIR)/$(CCACHE_
 	# Keep the actual toolchain binaries in a directory at the same level.
 	# Otherwise, relative paths for include dirs break.
 	mkdir -p $(CCACHE_BIN_DIR)
-	for i in gcc g++; do \
+	for i in gcc g++ g++-wrapper; do \
 		[ -f $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(REAL_GNU_TARGET_NAME)-$$i -a \
 			! -h $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(REAL_GNU_TARGET_NAME)-$$i ] && \
 			mv $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(REAL_GNU_TARGET_NAME)-$$i $(CCACHE_BIN_DIR)/ || true; \
@@ -71,7 +71,8 @@ $(TARGET_TOOLCHAIN_STAGING_DIR)/$(CCACHE_TARGET_BINARY): $(CCACHE_DIR)/$(CCACHE_
 	( cd $(CCACHE_BIN_DIR); \
 		ln -fs $(REAL_GNU_TARGET_NAME)-gcc $(REAL_GNU_TARGET_NAME)-cc; \
 		ln -fs $(REAL_GNU_TARGET_NAME)-g++ $(REAL_GNU_TARGET_NAME)-c++; \
-		for i in gcc g++ cc c++; do \
+		ln -fs $(REAL_GNU_TARGET_NAME)-g++ $(REAL_GNU_TARGET_NAME)-g++-wrapper; \
+		for i in gcc g++ cc c++ g++-wrapper; do \
 			ln -fs $(REAL_GNU_TARGET_NAME)-$$i $(GNU_TARGET_NAME)-$$i; \
 		done; \
 	)
