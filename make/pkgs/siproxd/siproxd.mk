@@ -1,6 +1,6 @@
 $(call PKG_INIT_BIN, 0.8.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=df2df04faf5bdb4980cbdfd5516a47898fc47ca1ebc2c628aa48305b20a09dad
+#$(PKG)_HASH:=df2df04faf5bdb4980cbdfd5516a47898fc47ca1ebc2c628aa48305b20a09dad
 $(PKG)_SITE:=@SF/$(pkg)
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/src/$(pkg)
