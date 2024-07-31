@@ -53,6 +53,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-utmp
 $(PKG)_CONFIGURE_OPTIONS += --disable-utmpx
 $(PKG)_CONFIGURE_OPTIONS += --disable-wtmp
 $(PKG)_CONFIGURE_OPTIONS += --disable-wtmpx
+$(PKG)_CONFIGURE_OPTIONS += --enable-dsa-keys
 $(PKG)_CONFIGURE_OPTIONS += --without-bsd-auth
 $(PKG)_CONFIGURE_OPTIONS += --without-kerberos5
 $(PKG)_CONFIGURE_OPTIONS += --without-pie
