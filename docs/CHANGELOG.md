@@ -48,8 +48,8 @@ Latest changes
 
 ### devel
 
- - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+ - Libraries:
+   * liburcu 0.14.0
 
 ### ng24080
 
