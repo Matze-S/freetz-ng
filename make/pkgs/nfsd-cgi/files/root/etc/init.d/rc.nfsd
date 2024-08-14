@@ -89,6 +89,7 @@ case $1 in
 		modreg file nfsd hosts_allow 'hosts.allow' 1 "hosts_allow"
 		modreg file nfsd hosts_deny 'hosts.deny' 1 "hosts_deny"
 		modreg file nfsd exports 'exports' 1 "exports"
+		modreg file nfsd nfs_conf 'nfs.conf' 1 "nfs_conf"
 
 		modlib_start $NFSD_ENABLED
 		;;
