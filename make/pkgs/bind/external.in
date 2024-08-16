@@ -59,5 +59,181 @@ if EXTERNAL_FREETZ_PACKAGE_BIND
 			externals the following file(s):
 			 /usr/bin/nslookup
 
+#        config EXTERNAL_FREETZ_PACKAGE_BIND_BIND.KEYS
+#                depends on FREETZ_PACKAGE_BIND_BIND.KEYS
+#                bool "bind.keys"
+#                default n
+#                help
+#                        externals the following file(s):
+#                         /etc/bind.keys
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DDNS_CONFGEN
+                depends on FREETZ_PACKAGE_BIND_DDNS_CONFGEN
+                bool "ddns-confgen"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/sbin/ddns-confgen
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_RNDC_CONFGEN
+                depends on FREETZ_PACKAGE_BIND_RNDC_CONFGEN
+                bool "rndc-confgen"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/sbin/rndc-confgen
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_TSIG_KEYGEN
+                depends on FREETZ_PACKAGE_BIND_TSIG_KEYGEN
+                bool "tsig-keygen"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/sbin/tsig-keygen
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_ARPANAME
+                depends on FREETZ_PACKAGE_BIND_ARPANAME
+                bool "arpaname"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/arpaname
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DELV
+                depends on FREETZ_PACKAGE_BIND_DELV
+                bool "delv"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/delv
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_CDS
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_CDS
+                bool "dnssec-cds"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-cds
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_DSFROMKEY
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_DSFROMKEY
+                bool "dnssec-dsfromkey"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-dsfromkey
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_IMPORTKEY
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_IMPORTKEY
+                bool "dnssec-importkey"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-importkey
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_KEYFROMLABEL
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_KEYFROMLABEL
+                bool "dnssec-keyfromlabel"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-keyfromlabel
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_KEYGEN
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_KEYGEN
+                bool "dnssec-keygen"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-keygen
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_REVOKE
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_REVOKE
+                bool "dnssec-revoke"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-revoke
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_SETTIME
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_SETTIME
+                bool "dnssec-settime"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-settime
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_SIGNZONE
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_SIGNZONE
+                bool "dnssec-signzone"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-signzone
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_DNSSEC_VERIFY
+                depends on FREETZ_PACKAGE_BIND_DNSSEC_VERIFY
+                bool "dnssec-verify"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/dnssec-verify
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_MDIG
+                depends on FREETZ_PACKAGE_BIND_MDIG
+                bool "mdig"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/mdig
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NAMED_CHECKCONF
+                depends on FREETZ_PACKAGE_BIND_NAMED_CHECKCONF
+                bool "named-checkconf"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/named-checkconf
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NAMED_CHECKZONE
+                depends on FREETZ_PACKAGE_BIND_NAMED_CHECKZONE
+                bool "named-checkzone"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/named-checkzone
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NAMED_COMPILEZONE
+                depends on FREETZ_PACKAGE_BIND_NAMED_COMPILEZONE
+                bool "named-compilezone"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/named-compilezone
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NAMED_JOURNALPRINT
+                depends on FREETZ_PACKAGE_BIND_NAMED_JOURNALPRINT
+                bool "named-journalprint"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/named-journalprint
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NAMED_RRCHECKER
+                depends on FREETZ_PACKAGE_BIND_NAMED_RRCHECKER
+                bool "named-rrchecker"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/named-rrchecker
+
+        config EXTERNAL_FREETZ_PACKAGE_BIND_NSEC3HASH
+                depends on FREETZ_PACKAGE_BIND_NSEC3HASH
+                bool "nsec3hash"
+                default n
+                help
+                        externals the following file(s):
+                         /usr/bin/nsec3hash
+
 endif # EXTERNAL_FREETZ_PACKAGE_BIND
 
