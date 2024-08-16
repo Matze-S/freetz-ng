@@ -100,5 +100,85 @@ if FREETZ_PACKAGE_BIND
 			nslookup is a program to query Internet domain name servers.
 			This file needs about 2,8 MB uncompressed.
 
+        config FREETZ_PACKAGE_BIND_RNDC_CONFGEN
+                bool "rndc-confgen (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_TSIG_KEYGEN
+                bool "tsig-keygen (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_NAMED_CHECKCONF
+                bool "named-checkconf (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_NAMED_CHECKZONE
+                bool "named-checkzone (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_NAMED_JOURNALPRINT
+                bool "named-journalprint (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_NAMED_RRCHECKER
+                bool "named-rrchecker (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_NSEC3HASH
+                bool "nsec3hash (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_CDS
+                bool "dnssec-cds (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_DSFROMKEY
+                bool "dnssec-dsfromkey (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_IMPORTKEY
+                bool "dnssec-importkey (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_KEYFROMLABEL
+                bool "dnssec-keyfromlabel (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_KEYGEN
+                bool "dnssec-keygen (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_REVOKE
+                bool "dnssec-revoke (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_SETTIME
+                bool "dnssec-settime (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_SIGNZONE
+                bool "dnssec-signzone (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
+        config FREETZ_PACKAGE_BIND_DNSSEC_VERIFY
+                bool "dnssec-verify (binary only)"
+                select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+                default n
+
 endif # FREETZ_PACKAGE_BIND
 
