@@ -29,6 +29,15 @@ $(PKG)_BINARIES_DST_DIR             := sbin  sbin  bin      bin  bin  bin
 $(PKG)_BINARIES_SRC_DIR             := named rndc  nsupdate dig  dig  dig
 $(PKG)_BINARIES_ALL                 := named rndc  nsupdate dig  host nslookup
 
+$(PKG)_BINARIES_DST_DIR             += sbin         sbin        bin             bin             bin                bin             bin
+$(PKG)_BINARIES_SRC_DIR             += confgen      confgen     check           check           tools              tools           tools
+$(PKG)_BINARIES_ALL                 += rndc-confgen tsig-keygen named-checkconf named-checkzone named-journalprint named-rrchecker nsec3hash
+
+$(PKG)_BINARIES_DST_DIR             += sbin       sbin             sbin             sbin                bin           sbin          bin            bin             bin
+$(PKG)_BINARIES_SRC_DIR             += dnssec     dnssec           dnssec           dnssec              dnssec        dnssec        dnssec         dnssec          dnssec
+$(PKG)_BINARIES_ALL                 += dnssec-cds dnssec-dsfromkey dnssec-importkey dnssec-keyfromlabel dnssec-keygen dnssec-revoke dnssec-settime dnssec-signzone dnssec-verify
+
+
 $(PKG)_BINARIES                     := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
 ifeq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
 $(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/),$($(PKG)_BINARIES_ALL))
