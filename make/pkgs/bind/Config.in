@@ -180,5 +180,26 @@ if FREETZ_PACKAGE_BIND
                 select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
                 default n
 
+	config FREETZ_PACKAGE_BIND_ARPANAME # bind9
+		bool "arpaname (binary only)"
+		select FREETZ_LIB_libisc	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		default n
+
+	config FREETZ_PACKAGE_BIND_DELV # bind9-dnsutils
+		bool "delv (binary only)"
+		select FREETZ_LIB_libdns	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libisc	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libirs	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libisccfg	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		default n
+
+	config FREETZ_PACKAGE_BIND_MDIG # bind9-dnsutils
+		bool "mdig (binary only)"
+		select FREETZ_LIB_libdns	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libbind9	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libisc	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libisccfg	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		default n
+
 endif # FREETZ_PACKAGE_BIND
 
