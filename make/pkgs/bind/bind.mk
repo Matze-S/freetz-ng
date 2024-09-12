@@ -37,6 +37,15 @@ $(PKG)_BINARIES_DST_DIR             += sbin       sbin             sbin         
 $(PKG)_BINARIES_SRC_DIR             += dnssec     dnssec           dnssec           dnssec              dnssec        dnssec        dnssec         dnssec          dnssec
 $(PKG)_BINARIES_ALL                 += dnssec-cds dnssec-dsfromkey dnssec-importkey dnssec-keyfromlabel dnssec-keygen dnssec-revoke dnssec-settime dnssec-signzone dnssec-verify
 
+#MSC: bind9
+$(PKG)_BINARIES_DST_DIR		+= bin
+$(PKG)_BINARIES_SRC_DIR		+= tools
+$(PKG)_BINARIES_ALL		+= arpaname
+
+# MSC: bind9-dnsutils
+$(PKG)_BINARIES_DST_DIR		+= bin bin
+$(PKG)_BINARIES_SRC_DIR		+= delv tools
+$(PKG)_BINARIES_ALL		+= delv mdig
 
 $(PKG)_BINARIES                     := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
 ifeq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
