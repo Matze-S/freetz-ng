@@ -100,6 +100,11 @@ if FREETZ_PACKAGE_BIND
 			nslookup is a program to query Internet domain name servers.
 			This file needs about 2,8 MB uncompressed.
 
+	config FREETZ_PACKAGE_BIND_DDNS_CONFGEN
+		bool "ddns-confgen (binary only)"
+		select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		default n
+
         config FREETZ_PACKAGE_BIND_RNDC_CONFGEN
                 bool "rndc-confgen (binary only)"
                 select FREETZ_LIB_libirs     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON

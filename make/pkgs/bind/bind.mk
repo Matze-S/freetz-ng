@@ -29,9 +29,9 @@ $(PKG)_BINARIES_DST_DIR             := sbin  sbin  bin      bin  bin  bin
 $(PKG)_BINARIES_SRC_DIR             := named rndc  nsupdate dig  dig  dig
 $(PKG)_BINARIES_ALL                 := named rndc  nsupdate dig  host nslookup
 
-$(PKG)_BINARIES_DST_DIR             += sbin         sbin        bin             bin             bin                bin             bin
-$(PKG)_BINARIES_SRC_DIR             += confgen      confgen     check           check           tools              tools           tools
-$(PKG)_BINARIES_ALL                 += rndc-confgen tsig-keygen named-checkconf named-checkzone named-journalprint named-rrchecker nsec3hash
+$(PKG)_BINARIES_DST_DIR             += sbin         sbin         sbin        bin             bin             bin                bin             bin
+$(PKG)_BINARIES_SRC_DIR             += confgen      confgen      confgen     check           check           tools              tools           tools
+$(PKG)_BINARIES_ALL                 += ddns-confgen rndc-confgen tsig-keygen named-checkconf named-checkzone named-journalprint named-rrchecker nsec3hash
 
 $(PKG)_BINARIES_DST_DIR             += sbin       sbin             sbin             sbin                bin           sbin          bin            bin             bin
 $(PKG)_BINARIES_SRC_DIR             += dnssec     dnssec           dnssec           dnssec              dnssec        dnssec        dnssec         dnssec          dnssec
