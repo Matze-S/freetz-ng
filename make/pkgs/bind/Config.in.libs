@@ -14,6 +14,18 @@ menu "Bind"
 		select FREETZ_LIB_liburcu_cds
 		select FREETZ_LIB_liburcu_common
 
+        config FREETZ_LIB_libirs
+		bool "libirs (libirs.so)"
+		default n
+		select FREETZ_LIB_libatomic
+		select FREETZ_LIB_libcrypto
+		select FREETZ_LIB_libcrypto_WITH_EC
+		select FREETZ_LIB_libssl
+		select FREETZ_LIB_liburcu
+		select FREETZ_LIB_liburcu
+		select FREETZ_LIB_liburcu_cds
+		select FREETZ_LIB_liburcu_common
+
 	config FREETZ_LIB_libisc
 		bool "libisc (libisc.so)"
 		default n
