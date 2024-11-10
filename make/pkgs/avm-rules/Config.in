@@ -2,7 +2,7 @@ config FREETZ_PACKAGE_AVM_RULES
 	bool "AVM-rules - DEVELOPER"
 	depends on FREETZ_AVM_HAS_DSLD
 	depends on !FREETZ_REMOVE_DSLD
-	depends on FREETZ_AVM_VERSION_07_5X_MIN && FREETZ_REAL_DEVELOPER_ONLY
+#	depends on FREETZ_AVM_VERSION_07_5X_MIN && FREETZ_REAL_DEVELOPER_ONLY
 	default n
 	help
 		For FritzOS since v7.5x only.
