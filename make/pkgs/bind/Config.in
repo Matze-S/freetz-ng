@@ -64,6 +64,12 @@ if FREETZ_PACKAGE_BIND
 			help
 				This selects the remapping of multid's DNS (and LLMNR) ports.
 
+	config FREETZ_PACKAGE_BIND_GEOIP
+		bool "MSC: build with geoIP/MaxMindDB suppor"
+		depends on FREETZ_PACKAGE_BIND_NAMED
+		select FREETZ_LIB_libmaxminddb	if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		default n
+
 	config FREETZ_PACKAGE_BIND_RNDC
 		bool "rndc (binary only)"
 		select FREETZ_LIB_libisccc           if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
