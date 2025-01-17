@@ -29,30 +29,46 @@ $(PKG)_BINARIES_DST_DIR             := sbin  sbin  bin      bin  bin  bin
 $(PKG)_BINARIES_SRC_DIR             := named rndc  nsupdate dig  dig  dig
 $(PKG)_BINARIES_ALL                 := named rndc  nsupdate dig  host nslookup
 
+# MSC: ddns-confgen: srcbin != dstbin
+$(PKG)_BINARIES_SRC_ALL             := named rndc  nsupdate dig  host nslookup
+
 $(PKG)_BINARIES_DST_DIR             += sbin         sbin         sbin        bin             bin             bin                bin             bin
 $(PKG)_BINARIES_SRC_DIR             += confgen      confgen      confgen     check           check           tools              tools           tools
 $(PKG)_BINARIES_ALL                 += ddns-confgen rndc-confgen tsig-keygen named-checkconf named-checkzone named-journalprint named-rrchecker nsec3hash
+
+# MSC: ddns-confgen: srcbin != dstbin (!!!)
+$(PKG)_BINARIES_SRC_ALL             += ddns-confgen rndc-confgen tsig-keygen named-checkconf named-checkzone named-journalprint named-rrchecker nsec3hash
 
 $(PKG)_BINARIES_DST_DIR             += sbin       sbin             sbin             sbin                bin           sbin          bin            bin             bin
 $(PKG)_BINARIES_SRC_DIR             += dnssec     dnssec           dnssec           dnssec              dnssec        dnssec        dnssec         dnssec          dnssec
 $(PKG)_BINARIES_ALL                 += dnssec-cds dnssec-dsfromkey dnssec-importkey dnssec-keyfromlabel dnssec-keygen dnssec-revoke dnssec-settime dnssec-signzone dnssec-verify
 
+# MSC: ddns-confgen: srcbin != dstbin
+$(PKG)_BINARIES_SRC_ALL             += dnssec-cds dnssec-dsfromkey dnssec-importkey dnssec-keyfromlabel dnssec-keygen dnssec-revoke dnssec-settime dnssec-signzone dnssec-verify
+
 #MSC: bind9
-$(PKG)_BINARIES_DST_DIR		+= bin
-$(PKG)_BINARIES_SRC_DIR		+= tools
-$(PKG)_BINARIES_ALL		+= arpaname
+$(PKG)_BINARIES_DST_DIR		    += bin
+$(PKG)_BINARIES_SRC_DIR		    += tools
+$(PKG)_BINARIES_ALL		    += arpaname
+
+# MSC: ddns-confgen: srcbin != dstbin
+$(PKG)_BINARIES_SRC_ALL		    += arpaname
 
 # MSC: bind9-dnsutils
-$(PKG)_BINARIES_DST_DIR		+= bin bin
-$(PKG)_BINARIES_SRC_DIR		+= delv tools
-$(PKG)_BINARIES_ALL		+= delv mdig
+$(PKG)_BINARIES_DST_DIR		    += bin bin
+$(PKG)_BINARIES_SRC_DIR		    += delv tools
+$(PKG)_BINARIES_ALL		    += delv mdig
+
+# MSC: ddns-confgen: srcbin != dstbin
+$(PKG)_BINARIES_SRC_ALL		    += delv mdig
 
 $(PKG)_BINARIES                     := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
 ifeq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
-$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/),$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/),$($(PKG)_BINARIES_SRC_ALL))
 else
-$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/.libs/),$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/.libs/),$($(PKG)_BINARIES_SRC_ALL))
 endif
+$(PKG)_BINARIES_SRC_ALL_TARGET_DIR      := $(join $($(PKG)_BINARIES_DST_DIR:%=$($(PKG)_DEST_DIR)/usr/%/),$($(PKG)_BINARIES_SRC_ALL))
 $(PKG)_BINARIES_ALL_TARGET_DIR      := $(join $($(PKG)_BINARIES_DST_DIR:%=$($(PKG)_DEST_DIR)/usr/%/),$($(PKG)_BINARIES_ALL))
 $(PKG)_FILTER_OUT                    = $(foreach k,$(1), $(foreach v,$(2), $(if $(subst $(notdir $(v)),,$(k)),,$(v)) ) )
 $(PKG)_BINARIES_TARGET_DIR          := $(call $(PKG)_FILTER_OUT,$($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL_TARGET_DIR))
@@ -130,6 +146,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-libidn2
 $(PKG)_CONFIGURE_OPTIONS += --without-cmocka
 $(PKG)_CONFIGURE_OPTIONS += --without-jemalloc
 $(PKG)_CONFIGURE_OPTIONS += --disable-dnsrps
+
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
