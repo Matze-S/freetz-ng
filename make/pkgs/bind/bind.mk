@@ -49,6 +49,11 @@ ifneq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
 $(PKG)_DEPENDS_ON += libatomic libuv openssl libcap liburcu
 endif
 
+# MSC: build with geoip db
+ifeq ($(strip $(FREETZ_PACKAGE_BIND_GEOIP)),y)
+$(PKG)_DEPENDS_ON += libmaxminddb
+endif
+
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),abandon,current)
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure) 
@@ -77,11 +82,25 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-backtrace
 $(PKG)_CONFIGURE_OPTIONS += --disable-symtable
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 else
+
+# MSC: build with geoip db
+ifneq ($(strip $(FREETZ_PACKAGE_BIND_GEOIP)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-geoip
+else
+$(PKG)_CONFIGURE_OPTIONS += --enable-geoip
+endif
+
 $(PKG)_CONFIGURE_OPTIONS += --disable-doh
 $(PKG)_CONFIGURE_OPTIONS += --disable-chroot
 $(PKG)_CONFIGURE_OPTIONS += --enable-full-report
+
+# MSC: build with geoip db
+ifneq ($(strip $(FREETZ_PACKAGE_BIND_GEOIP)),y)
 $(PKG)_CONFIGURE_OPTIONS += --without-maxminddb
+else
+$(PKG)_CONFIGURE_OPTIONS += --with-maxminddb
+endif
+
 $(PKG)_CONFIGURE_OPTIONS += --without-libnghttp2
 $(PKG)_CONFIGURE_OPTIONS += --without-gssapi
 $(PKG)_CONFIGURE_OPTIONS += --without-lmdb
@@ -162,5 +181,11 @@ $(call PKG_ADD_LIB,libisccc)
 $(call PKG_ADD_LIB,libisccfg)
 $(call PKG_ADD_LIB,libisc)
 $(call PKG_ADD_LIB,libns)
+
+# MSC: build with geoip db
+ifeq ($(strip $(FREETZ_PACKAGE_BIND_GEOIP)),y)
+$(call PKG_ADD_LIB,libmaxminddb)
+endif
+
 $(PKG_FINISH)
 
