@@ -88,6 +88,7 @@ ifneq ($(strip $(FREETZ_PACKAGE_BIND_GEOIP)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-geoip
 else
 $(PKG)_CONFIGURE_OPTIONS += --enable-geoip
+$(PKG)_CONFIGURE_OPTIONS += --with-geoip-debug
 endif
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-doh
