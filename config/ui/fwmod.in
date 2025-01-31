@@ -89,7 +89,7 @@ menu "Firmware packaging (fwmod) options"
 
 	config FREETZ_FWMOD_USBROOT
 		bool "Pack file system into archive (USB root mode)"
-		depends on FREETZ_KERNEL_VERSION_2
+#		depends on FREETZ_KERNEL_VERSION_2
 		default n
 		help
 			Choose this option if you intend to use the modified file system as a
@@ -103,7 +103,7 @@ menu "Firmware packaging (fwmod) options"
 	config FREETZ_FWMOD_NFSROOT
 		bool "Copy file system to target folder (NFS root mode)"
 		default n
-		depends on FREETZ_KERNEL_VERSION_2
+#		depends on FREETZ_KERNEL_VERSION_2
 		select FREETZ_FWMOD_USBROOT
 		help
 			Choose this option if you intend to use the modified file system as
