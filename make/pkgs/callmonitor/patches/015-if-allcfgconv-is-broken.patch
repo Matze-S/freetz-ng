@@ -1,0 +1,18 @@
+--- base/usr/lib/callmonitor/modules/config.sh	2025-02-18 17:04:03.833397142 +0100
++++ base/usr/lib/callmonitor/modules/config.sh	2025-02-18 17:01:38.626561093 +0100
+@@ -1,6 +1,15 @@
+ #! /bin/ash
+ cfg_cat() {
+     local allcfgconv_bin="allcfgconv"
++
++    ## MSC: if allcfgconv-c do npt return if allcfgconv do not work as expected
++    if ! allcfgconv -C "$1" -e -o - >/dev/null 2>&1; then
++        if type -p decrypt-fritzos-cfg >/dev/null 2>&1; then
++            decrypt-fritzos-cfg </var/flash/"$1.cfg"
++            return
++    	fi
++    fi
++
+     type -p allcfgconv-c >/dev/null 2>&1 && allcfgconv_bin="allcfgconv-c"
+     if $allcfgconv_bin -? 2>&1 | grep -q " -c "; then
+         $allcfgconv_bin -C "$1" -e -c -o -
