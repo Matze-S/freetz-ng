@@ -30,4 +30,7 @@
 # ignore ide project files
 /.project
 /.vs
+.bashrc
+.vscode
+.MSChelpers.tgz
 
