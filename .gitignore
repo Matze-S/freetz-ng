@@ -32,4 +32,6 @@
 /.project
 /.vs
 /.vscode
+.bashrc
+.MSChelpers*.tgz
 
