@@ -2076,7 +2076,8 @@ config FREETZ_DISABLE_SERIAL_CONSOLE
 
 config FREETZ_PATCH_DISABLE_AVM_WATCHDOG
 	bool "Disable AVM watchdog - DEVELOPER"
-	depends on FREETZ_SHOW_DEVELOPER
+	# MSC: enable watchdog disable without developer mode
+#	depends on FREETZ_SHOW_DEVELOPER
 	default n
 	help
 		This disables the AVM watchdog on system start.
