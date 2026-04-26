@@ -5,6 +5,8 @@ DAEMON_LONG_NAME=AVM-rules
 . /etc/init.d/modlibrc
 
 startdaemon_pre() {
+	# MSC: added v6 support
+	[ -n "$AVM_RULES_TCP6$AVM_RULES_UDP6" ] && \
 	[ -n "$AVM_RULES_TCP$AVM_RULES_UDP" ]
 }
 

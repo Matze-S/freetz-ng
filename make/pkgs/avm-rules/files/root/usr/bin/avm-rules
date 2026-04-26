@@ -5,6 +5,9 @@
 
 dstip='169.254.1.1'
 stats='/proc/kdsld/dsliface/internet/ipmasq/pcp44'
+# MSC: IPv6 support: listener map for v6, command to determine WAN IP
+stats6='/proc/kdsld/dsliface/internet/ip6_ct/pcp66'
+getip6='get_ip --gua'
 
 log() {
 	[ "$AVM_RULES_LOGGING" == "yes" ] || return
@@ -17,12 +20,27 @@ start() {
 	echo "Starting daemon script" | log
 	while true; do
 		[ -r /var/mod/etc/conf/avm-rules.cfg ] && . /var/mod/etc/conf/avm-rules.cfg
+		# MSC: added IPv6 support
+		[ -z "$AVM_RULES_TCP6" ] && [ -z "$AVM_RULES_UDP6" ] && \
 		[ -z "$AVM_RULES_TCP" ] && [ -z "$AVM_RULES_UDP" ] && echo "Error, can not start without any configured ports." && exit 1
 		[ "$AVM_RULES_SECONDS" -le 120 ] 2>/dev/null || AVM_RULES_SECONDS="120"  # check input
+
+		# MSC: get current external IPv6 first
+		dstip6="$($getip6)"
+		[ -z "${dstip6}" ] && [ -n "$AVM_RULES_TCP6" -o -n "$AVM_RULES_UDP6" ] && echo "Warning, can not open ipv6 ports without ipv6 wan address." # && exit 1
+		# MSC: setup v6 listener
+		[ -n "${dstip6}" ] && for x in $AVM_RULES_TCP6; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten tcp $dstip6 $x $AVM_RULES_SECONDS FREETZ-tcp6-$x | log; done
+		[ -n "${dstip6}" ] && for x in $AVM_RULES_UDP6; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten udp $dstip6 $x $AVM_RULES_SECONDS FREETZ-udp6-$x | log; done
+		# MSC: collect timeouts from our opened ports
+		timeout_tcp6="$(sed -nr "s/^MAP +TCP +.*\[${dstip6}\]:($(echo $AVM_RULES_TCP6|sed "s/ /|/g")) +.*expire in ([0-9]+) secs/\2/p" ${stats6})"
+		timeout_udp6="$(sed -nr "s/^MAP +UDP +.*\[${dstip6}\]:($(echo $AVM_RULES_UDP6|sed "s/ /|/g")) +.*expire in ([0-9]+) secs/\2/p" ${stats6})"
 
 		for x in $AVM_RULES_TCP; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten tcp $dstip $x $AVM_RULES_SECONDS FREETZ-tcp-$x | log; done
 		for x in $AVM_RULES_UDP; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten udp $dstip $x $AVM_RULES_SECONDS FREETZ-udp-$x | log; done
 		timeout="$(sed -nr "s/^MAP .* \[${dstip}\]:.* expire in ([0-9]+) secs/\1/p" $stats | sort -n)"
+
+		# MSC: merge expiration times from our (!) open IPv6 ports together with the v4 times and resort
+		timeout="$(echo "${timeout}" "${timeout_tcp6}" "${timeout_udp6}" | sort -n)";
 
 		if [ -n "$timeout" ]; then
 			tiny=""
@@ -44,6 +62,11 @@ start() {
 stats() {
 	echo "Currently opened ports:"
 	grep "^MAP .* \[${dstip}\]" $stats | sort
+
+	# MSC: show open ports for IPv6 (TODO: only show stats about avm-rules opened ports)
+	dstip6="$($getip6)" && \
+	[ -n "${dstip6}" ] && \
+	grep "^MAP .* \[${dstip6}\]" $stats6 | sort
 }
 usage() {
 	echo "Usage: $0 [start|stats]"
