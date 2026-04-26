@@ -11,4 +11,5 @@ config FREETZ_PACKAGE_AVM_RULES
 		by using pcplisten.
 		This avm tool can open ports for not more than 120 seconds.
 		The steady renewal is managed by this package.
+		MSC: added IPv6 support
 

@@ -22,6 +22,10 @@ cgi_print_textline_p "tcp" "$AVM_RULES_TCP" 55/255 "TCP$(lang de:"-Ports" en:" p
 
 cgi_print_textline_p "udp" "$AVM_RULES_UDP" 55/255 "UDP$(lang de:"-Ports" en:" ports"): "
 
+cgi_print_textline_p "tcp6" "$AVM_RULES_TCP6" 54/255 "TCP6$(lang de:"-Ports" en:" ports"): "
+
+cgi_print_textline_p "udp6" "$AVM_RULES_UDP6" 54/255 "UDP6$(lang de:"-Ports" en:" ports"): "
+
 cgi_print_textline_p "seconds" "$AVM_RULES_SECONDS" 5/3 "$(lang de:"Timeout der offenen Ports, max 120 [Sekunden]" en:"Timeout of opened ports, max 120 [seconds]"): "
 
 cgi_print_textline_p "initial" "$AVM_RULES_INITIAL" 5/3 "$(lang de:"Timeout ohne Internetverbindung [Sekunden]" en:"Timeout without internet connection [seconds]"): "
