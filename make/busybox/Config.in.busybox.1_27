@@ -16,7 +16,9 @@ config FREETZ_BUSYBOX___V127_HAVE_DOT_CONFIG
 menu "Busybox Settings"
 
 config FREETZ_BUSYBOX___V127_DESKTOP
-	depends on !FREETZ_PATCH_FREETZMOUNT && !FREETZ_PACKAGE_OPENVPN_CGI && !FREETZ_PACKAGE_GW6
+	# MSC: allow selection of this option even if openvpn cgi is selected
+	depends on !FREETZ_PATCH_FREETZMOUNT                                && !FREETZ_PACKAGE_GW6
+#	depends on !FREETZ_PATCH_FREETZMOUNT && !FREETZ_PACKAGE_OPENVPN_CGI && !FREETZ_PACKAGE_GW6
 	bool "Enable options for full-blown desktop systems"
 	default n
 	help
