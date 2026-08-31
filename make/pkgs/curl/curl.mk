@@ -77,7 +77,9 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-ldap
 $(PKG)_CONFIGURE_OPTIONS += --disable-ldaps
 $(PKG)_CONFIGURE_OPTIONS += --disable-pop3
 $(PKG)_CONFIGURE_OPTIONS += --disable-smb
-$(PKG)_CONFIGURE_OPTIONS += --disable-smtp
+# MSC: enable smtp protocoll
+$(PKG)_CONFIGURE_OPTIONS += --enable-smtp
+#$(PKG)_CONFIGURE_OPTIONS += --disable-smtp
 $(PKG)_CONFIGURE_OPTIONS += --disable-sspi
 $(PKG)_CONFIGURE_OPTIONS += --disable-telnet
 $(PKG)_CONFIGURE_OPTIONS += --disable-tftp
