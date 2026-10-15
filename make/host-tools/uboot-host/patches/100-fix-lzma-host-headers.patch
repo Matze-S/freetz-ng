@@ -1,0 +1,22 @@
+Avoid mixing bundled LZMA headers with host-installed LZMA SDK headers.
+
+Host tools search U-Boot's include directory after system headers. Select
+U-Boot's own LZMA headers explicitly, relative to boot/image.c, without
+changing the global include search order.
+
+--- boot/image.c
++++ boot/image.c
+@@ -57,9 +57,9 @@
+ #include <relocate.h>
+ #include <linux/lzo.h>
+ #include <linux/zstd.h>
+-#include <lzma/LzmaTypes.h>
+-#include <lzma/LzmaDec.h>
+-#include <lzma/LzmaTools.h>
++#include "../include/lzma/LzmaTypes.h"
++#include "../include/lzma/LzmaDec.h"
++#include "../include/lzma/LzmaTools.h"
+ #include <u-boot/crc.h>
+ #include <u-boot/lz4.h>
+ static const table_entry_t uimage_arch[] = {
+
